@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to DashBoard</h1>
+<ul>
+    {% if submissions %}
+        {% for s in submissions %}
+            <li>{ { s.id } - { s.user.name } }</li>
+        {% endfor %}
+    {% else %}
+        There are no Submissions.
+    {% endif %}
+</ul>
+{% endblock %}

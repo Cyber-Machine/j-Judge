@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluation</title>
-</head>
-<body>
-    <h1>Login Page</h1>
-    <form method="post">
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mx-3 mt-3">
+
+    <h1>Login</h1>
+
+    <form  method="post">
         {% csrf_token %}
-        <!-- Creates a token to perform safety check- -->
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

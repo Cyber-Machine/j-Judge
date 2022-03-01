@@ -1,6 +1,7 @@
 import re
 from django.shortcuts import render , redirect
 from django.contrib.auth.forms import UserCreationForm
+from submissions.models import Submission
 # Create your views here.
 
 def register(request):
@@ -16,4 +17,15 @@ def register(request):
     return render(request, 'submissions/register.html',args)
   
 def dashboard(request):
-    return render(request, 'submissions/dashboard.html')
+    submissions = Submission.objects.all()
+    args = {
+        'submissions': submissions,
+    }
+    if request.user.is_superuser:
+        return render(request, 'submissions/admin_dashboard.html' , args)
+    else:
+        submission = Submission.objects.filter(user=request.user).first()
+        args={
+            'submission':submission
+        }
+        return render(request, 'submissions/student_dashboard.html',args)

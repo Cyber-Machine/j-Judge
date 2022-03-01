@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'submissions.apps.SubmissionsConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Sets the tenplate use for bootstrap by crispy.
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Setting detail for Login Redirect
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL= '/dashboard'
+LOGOUT_URL = '/logout'
+LOGOUT_REDIRECT_URL = '/'
